@@ -1,3 +1,4 @@
+#7.a
 def calculate_divided_differences(x, f):
     n = len(x)
     # Khởi tạo một danh sách 2D cho các sai phân chia
@@ -10,17 +11,17 @@ def calculate_divided_differences(x, f):
     # Tính toán các sai phân chia
     for i in range(1, n):
         for j in range(1, i + 1):
-            F[i][j] = round((F[i][j - 1] - F[i - 1][j - 1]) / (x[i] - x[i - j]),10)
+            F[i][j] = (F[i][j - 1] - F[i - 1][j - 1]) / (x[i] - x[i - j])
 
     return F
 
 def construct_newton_polynomial(F, x):
     n = len(x)
     he_so = [F[i][i] for i in range(n)]
-    polynomial = f"{he_so[0]}"
+    polynomial = f"{round(he_so[0],10)}"
     
     for i in range(1, n):
-        term = f"{he_so[i]}"
+        term = f"{round(he_so[i],10)}"
         for j in range(i):
             term += f"*(x - {x[j]})"
         polynomial += f" + {term}"
@@ -37,14 +38,14 @@ F = calculate_divided_differences(x, f)
 # Xuất kết quả
 print("Các sai phân chia là:")
 for i in range(len(F)):
-    print(f"F[{i}][{i}] = {F[i][i]}")
+    print(f"F[{i}][{i}] = {round(F[i][i],10)}")
 
 # Xây dựng đa thức nội suy
 Da_thuc = construct_newton_polynomial(F, x)
 print("\nĐa thức nội suy bậc ba là:")
 print(Da_thuc)
 
-
+#7.b
 # Thêm điểm mới
 x.append(0.35)
 f.append(0.97260)
@@ -55,7 +56,7 @@ F = calculate_divided_differences(x, f)
 # Xuất kết quả
 print("\nCác sai phân chia cho tập điểm mới là:")
 for i in range(len(F)):
-    print(f"F[{i}][{i}] = {F[i][i]}")
+    print(f"F[{i}][{i}] = {round(F[i][i],10)}")
 
 # Xây dựng đa thức nội suy mới
 Da_thuc = construct_newton_polynomial(F, x)

@@ -7,7 +7,7 @@ def calculate_missing_entries():
     f_x0_x1_x2 = 50 / 7
 
     # Tính f[x1] sử dụng f[x1, x2]
-    f[1] = 6 - f_x1_x2 * (x[2] - x[1])
+    f[1] = 6 - f_x1_x2 * (x[2] - x[1]),10
 
     # Tính f[x0] sử dụng f[x0, x1, x2]
     f_x0_x1 = f_x1_x2 - f_x0_x1_x2 * (x[2] - x[0])
