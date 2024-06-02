@@ -10,7 +10,7 @@ def calculate_divided_differences(x, f):
     # Tính toán các sai phân chia
     for i in range(1, n):
         for j in range(1, i + 1):
-            F[i][j] = (F[i][j - 1] - F[i - 1][j - 1]) / (x[i] - x[i - j])
+            F[i][j] = round((F[i][j - 1] - F[i - 1][j - 1]) / (x[i] - x[i - j]),10)
 
     return F
 
